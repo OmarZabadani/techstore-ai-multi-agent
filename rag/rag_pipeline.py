@@ -7,7 +7,7 @@ from langchain_chroma import Chroma
 
 
 KNOWLEDGE_BASE_PATH = Path("knowledge_base")
-CHROMA_PATH = "chroma_db"
+CHROMA_PATH = Path("chroma_db")
 
 
 def load_documents():
@@ -44,7 +44,7 @@ def create_vector_store(chunks):
     vector_store = Chroma.from_documents(
         documents=chunks,
         embedding=embeddings,
-        persist_directory=CHROMA_PATH
+        persist_directory=str(CHROMA_PATH)
     )
 
     print("Documents stored in Chroma")
@@ -52,12 +52,23 @@ def create_vector_store(chunks):
     return vector_store
 
 
+def vector_store_exists():
+    if CHROMA_PATH.exists() and any(CHROMA_PATH.iterdir()):
+        print("Chroma database already exists.")
+        return True
+
+    print("Chroma database does not exist. Building a new one...")
+    return False
+
+
 def build_rag():
+    if vector_store_exists():
+        print("Skipping document processing.")
+        return
+
     documents = load_documents()
     chunks = split_documents(documents)
-    vector_store = create_vector_store(chunks)
-
-    return vector_store
+    create_vector_store(chunks)
 
 
 if __name__ == "__main__":
