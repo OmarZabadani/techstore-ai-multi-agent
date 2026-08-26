@@ -1,0 +1,9 @@
+[33m91203d5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Ignore Python cache files
+ README.md                                | Bin [31m58[m -> [32m17580[m bytes
+ backend/__pycache__/main.cpython-313.pyc | Bin [31m1504[m -> [32m0[m bytes
+ backend/main.py                          |  11 [32m+++[m
+ frontend/index.html                      |  60 [32m++++++++++++++++[m
+ frontend/script.js                       |  90 [32m+++++++++++++++++++++++[m
+ frontend/style.css                       | 118 [32m+++++++++++++++++++++++++++++++[m
+ rag/retriever1.py                        |  34 [32m+++[m[31m------[m
+ 7 files changed, 290 insertions(+), 23 deletions(-)
