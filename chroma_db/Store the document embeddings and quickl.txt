@@ -1,1 +1,0 @@
-Store the document embeddings and quickly find the chunks most similar to the user's question.
